@@ -1,0 +1,33 @@
+create database employee
+create table emp1
+(
+Id int,
+Name varchar(20),
+Designation varchar(10),
+)
+insert into emp1 values(1,'prajwal','SE')
+insert into emp1 values(1,'mahesh','SE')
+insert into emp1 values(1,'deepak','HR')
+insert into emp1 values(1,'mohan','HR')
+
+select * from emp1
+
+alter database employee modify name=Dlithe_sql
+use Dlithe_sql
+
+drop table emp1
+create table emp1
+(
+Id int,
+Name varchar(20),
+Designation varchar(10),
+)
+insert into emp1 values(1,'prajwal','SE')
+insert into emp1 values(2,'mahesh','SE')
+insert into emp1 values(3,'deepak','HR')
+
+
+select * from emp1
+select ID,NAME from emp1
+
+select NAME,Designation from emp1

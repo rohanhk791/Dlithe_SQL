@@ -1,0 +1,89 @@
+create table emp1
+(
+Id int,
+Name varchar(20),
+Designation varchar(10),
+rating int,
+)
+drop table emp3
+insert into emp1 values(1,'prajwal','SE',4)
+insert into emp1 values(2,'mahesh','SE',3)
+insert into emp1 values(3,'deepak','HR',5)
+insert into emp1 values(4,'mohan','HR',4)
+insert into emp1 values(5,'rohit','SE',3)
+insert into emp1 values(6,'hemanth','HR',3)
+
+select * from emp1
+
+--Designation-IT--
+select * from emp1 where Designation='SE'
+
+--Relational Operators- > < >= <=--
+select * from emp1 where rating<4
+
+--Logical Operators and or not--
+select * from emp1 where id<4 and designation='SE'
+select * from emp1 where id<4 or designation='HR'
+
+
+--RANGE(BETWEEN AND)--
+select * from emp1 where rating between 2 and 4
+
+--IN AND NOT IN--
+select * from emp1 where Designation IN('SE','HR')
+select * from emp1 where Designation not IN('HR','SE')
+select * from emp1 where id IN(1,3)
+
+
+select * from emp1 where Name like '__a';
+
+
+create table student
+(
+ID int,
+Name varchar(30),
+Department varchar(25),
+Sgpa int,
+Cgpa int
+)
+insert into student values(101,'prajwal','CS',7,6)
+insert into student values(85,'mahesh','IS',6,5)
+insert into student values(21,'deepak','EC',8,7)
+insert into student values(42,'mohan','CS',9,8)
+insert into student values(29,'rohit','IS',7,6)
+insert into student values(56,'hemanth','ME',6,6)
+
+select * from student
+
+--score--
+select max(Cgpa) as 'Maximum Cgpa' from student
+select min(Cgpa) as 'Minimum Cgpa' from student
+select count(Sgpa) as 'Count Sgpa' from student
+select avg(Cgpa) as 'Average Cgpa' from student
+select sum(Cgpa) as 'Sum Cgpa' from student
+
+--ORDER BY(asc by default)--
+select * from student order by Cgpa
+select * from student order by Cgpa desc
+select * from student order by Name
+select * from student order by department,Sgpa
+select * from student order by department,Cgpa desc
+
+--GROUP BY - AGGREGATE ---
+select max(Cgpa) from student
+select max(Sgpa),department from student group by department
+select avg(Cgpa),department from student group by department
+
+
+--GROUP BY WITH ORDER BY----
+select avg(Cgpa),department from student group by department order by department desc
+--group by-condition-where is not allowed instead having clause---
+select avg(Sgpa),department from student group by department where avg(Sgpa)>9 order by avg(Sgpa)--error--
+
+select avg(Sgpa),department from student group by department having avg(Sgpa)>95 order by avg(Sgpa)
+
+--DISTINCT----
+select department from student
+select DISTINCT department from student
+select COUNT(department) from student
+select COUNT(DISTINCT department) from student
